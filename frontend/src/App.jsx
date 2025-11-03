@@ -132,7 +132,8 @@ export default function App() {
     apiMessages.push({ role: "user", content: text });
 
     try {
-      const res = await fetch("http://localhost:5000/api/chat", {
+      // Send request to backend
+      const res = await fetch(import.meta.env.VITE_API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: apiMessages, stream: true }),
